@@ -1,51 +1,79 @@
-#AWS Hardened EC2 Linux Server
-#Project Overview
+# AWS Hardened EC2 Linux Server
+
+## Project Overview
 
 This project demonstrates deploying and hardening an Ubuntu Linux server on AWS EC2 using industry-standard security best practices.
 
-The goal is to establish a secure baseline configuration that reduces attack surface and prevents common compromise techniques.
+The objective is to establish a secure baseline configuration that reduces attack surface, prevents common compromise techniques, and enables basic threat detection and response.
 
-#Architecture
+---
 
->AWS EC2 (Ubuntu 22.04 LTS)
->SSH key-based authentication
->Non-root administrative user
->Host-based firewall (UFW)
->Brute-force protection (Fail2Ban)
->Automatic security updates
+## Architecture
 
-#Hardening Steps
+- AWS EC2 (Ubuntu 22.04 LTS)
+- SSH key-based authentication
+- Non-root administrative user
+- Host-based firewall (UFW)
+- Brute-force protection (Fail2Ban)
+- Automatic security updates
+- Log monitoring and alerting (CloudWatch / CloudTrail)
 
->Deployed Ubuntu EC2 instance
->Applied system updates and patches
->Created non-root administrative user
->Disabled root SSH login
->Disabled password authentication
->Enabled SSH key-only access
->Configured UFW firewall
->Installed and configured Fail2Ban
->Enabled unattended security upgrades
+---
 
-#Validation
+## Hardening Steps
 
->Evidence of the following is provided in the screenshots folder:
->Successful SSH login as non-root user
->Firewall active and enforcing rules
->Fail2Ban running
->Automatic updates enabled
->SSH hardening settings applied
+- Deployed Ubuntu EC2 instance
+- Applied system updates and security patches
+- Created non-root administrative user
+- Disabled root SSH login
+- Disabled password authentication
+- Enforced SSH key-only access
+- Configured UFW firewall
+- Installed and configured Fail2Ban
+- Enabled unattended security upgrades
 
-#Security Rationale
+---
 
->Non-root access prevents direct privilege escalation
->Key-based authentication mitigates credential brute-force attacks
->Firewall restricts exposed network services
->Fail2Ban blocks repeated authentication attempts
->Automatic updates reduce exposure to known vulnerabilities
+## Security Monitoring & Incident Response
 
-#Lessons Learned
+- Monitored authentication logs for failed SSH attempts
+- Created alerting for suspicious login activity (e.g., multiple failed SSH attempts)
+- Detected repeated brute-force login attempts from external IP
+- Responded by blocking malicious IP using UFW firewall
+- Validated mitigation by stopping further unauthorized access attempts
 
->Importance of least privilege
->Value of layered security controls
->Basic Linux hardening techniques
->Cloud VM security fundamentals
+---
+
+## Validation
+
+Evidence provided in the screenshots folder:
+
+- Successful SSH login using non-root user
+- Firewall active and enforcing rules
+- Fail2Ban actively monitoring and blocking attempts
+- Automatic updates enabled
+- SSH hardening configurations applied
+- Detection of failed SSH login attempts in logs
+- Firewall rule applied to block malicious IP
+
+---
+
+## Security Rationale
+
+- Non-root access prevents direct privilege escalation
+- Key-based authentication mitigates brute-force attacks
+- Firewall restricts exposed network services
+- Fail2Ban provides automated protection against repeated login attempts
+- Monitoring and alerting enable detection of suspicious activity
+- Manual response (IP blocking) demonstrates incident mitigation
+- Automatic updates reduce exposure to known vulnerabilities
+
+---
+
+## Lessons Learned
+
+- Importance of least privilege access
+- Value of layered security controls (defense in depth)
+- Basics of Linux server hardening
+- Fundamentals of cloud VM security
+- Introduction to security monitoring and incident response
