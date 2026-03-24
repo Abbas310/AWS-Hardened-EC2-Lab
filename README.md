@@ -58,6 +58,15 @@ Evidence provided in the screenshots folder:
 
 ---
 
+## Automated Security Enforcement
+
+- Developed AWS Lambda function to enforce secure network configurations
+- Automatically detected and removed insecure inbound rules (e.g., 0.0.0.0/0 exposure)
+- Integrated with AWS event/logging mechanisms for trigger-based remediation
+- Reduced risk of unintended public exposure of services
+
+---
+
 ## Security Rationale
 
 - Non-root access prevents direct privilege escalation
@@ -67,7 +76,8 @@ Evidence provided in the screenshots folder:
 - Monitoring and alerting enable detection of suspicious activity
 - Manual response (IP blocking) demonstrates incident mitigation
 - Automatic updates reduce exposure to known vulnerabilities
-
+- Automated remediation enforces security policies and reduces human error
+  
 ---
 
 ## Lessons Learned
